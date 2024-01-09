@@ -1,0 +1,44 @@
+spring:
+  application:
+    name: chat-sample
+  freemarker:
+    cache: false
+    charset: UTF-8
+    suffix: .ftl
+    enabled: true
+    content-type: text/html
+    template-loader-path: classpath:/templates/,classpath:/static/
+
+server:
+  port: 8080
+
+chat:
+  llm:
+    # 阿里云accessKeyId
+    accessKeyId:
+    # 阿里云accessKeySecret
+    accessKeySecret:
+    # 阿里云百炼业务空间
+    agentKey:
+    # 阿里云百炼应用标识
+    appId:
+    timeout: 60 #超时时间60秒
+  security:
+    refererWhitelist:
+      - http://127.0.0.1:8080
+  app:
+    openTrace: true
+    sessionMaxMessages: 50 #对话记录, 最多50条
+    sessionTtl: 2          #对话缓存时间, 2小时
+
+  cache:
+    type: caffeine            #缓存配置, redis|caffeine, 默认为caffeine
+
+#redis:
+#  host: 127.0.0.1
+#  port: 6379
+#  password:
+
+logging:
+  level:
+    root: info
