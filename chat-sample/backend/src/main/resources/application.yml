@@ -19,9 +19,9 @@ chat:
     # 阿里云accessKeySecret
     accessKeySecret:
     # 阿里云百炼业务空间
-    agentKey: 9287d5f5f1384f0184d805b32a6c555d_p_efm
+    agentKey:
     # 阿里云百炼应用标识
-    appId: d5f5b802f30d481686976b5338dc0b27
+    appId:
     timeout: 60 #超时时间60秒
   security:
     refererWhitelist:
