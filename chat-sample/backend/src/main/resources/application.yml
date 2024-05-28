@@ -6,11 +6,12 @@ spring:
     view:
       prefix: classpath:/templates/
       suffix: .html
+  redis:
+    host: localhost
+    port: 6379
+    password:
 
 bailian:
-  # 百炼业务空间，子空间需要传此值，默认业务空间不需要传递此值
   workspace:
-  # 百炼应用id
   appId:
-  # 百炼api key
   apiKey:

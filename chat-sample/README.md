@@ -1,35 +1,43 @@
-# 阿里云百炼大模型对话示例
+chat-sample
 
-## 前提条件
-1. 安装nodejs 16+, jdk8+
-2. 开通阿里云百炼并创建应用，请参考文档[创建应用](https://help.aliyun.com/document_detail/2782159.html?spm=a2c4g.2400264.0.0.7c2e1ff5T3ztOy)。
-3. 获取到API-KEY和APP-ID，请参考文档[获取API-KEY和APP-ID](https://help.aliyun.com/document_detail/2782167.html?spm=a2c4g.2782232.0.0.fd0f7c90FC67Fv)。
+## 简介
+阿里云百炼平台应用对话与模型对话的简单示例，应用对话历史记录由云端托管，而模型对话历史记录需要用户自己处理，本工程使用Redis存储。
 
-### 编译和打包
-
-1. 编译启动前端页面
-
+## Jar编译及运行
 ```
-注意: 前后端分离本地测试，需要修改文件frontend/src/components/Index.vue如下
-const url = "http://127.0.0.1:8080/v1/completions";
-// const url = window.location.protocol + "//" + window.location.host + "/v1/completions";
-
-cd frontend
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
+cd build
+./build.sh
+java -jar chat.jar --spring.config.location=application.yml
 ```
 
-2. 启动后端服务
+## Docker编译及运行
 ```
-注意: 在编译启动后端服务前，先修改application.yml中的appId和apiKey。
-
-cd backend
-mvn package
-java -jar target/chat-sample.jar
+cd build
+./build.sh docker
+docker run -d -p 8080:8080 -v ./application.yml:/root/application.yml chat-sample:1.0.0
 ```
 
+## application.yml文件配置
+```
+server:
+  port: 8080
 
+spring:
+  mvc:
+    view:
+      prefix: classpath:/templates/
+      suffix: .html
+  redis:
+    host: localhost
+    port: 6379
+    password:
 
-
+bailian:
+  workspace:
+  appId: 
+  apiKey: 
+```
+bailian.workspace表示百炼业务空间，选填项，若不填则为默认业务空间。   
+bailian.appId表示百炼应用Id，选填项，也可通过web页面配置，若web配置为空则取该项配置。   
+bailian.apikey表示百炼平台密钥，必填项，在百炼控制台可获取。   
+spring.redis表示redis客户端相关配置，若使用模型对话则必须配置

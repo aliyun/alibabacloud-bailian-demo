@@ -22,6 +22,14 @@ body {
   background-color: #fff;
 }
 
+.md-dialog{
+  z-index: 10;
+}
+
+.md-dialog-container{
+  min-width: 600px !important;
+}
+
 @font-face {
   font-family: 'Material Icons';
   font-style: normal;

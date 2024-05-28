@@ -1,7 +1,6 @@
 #!/bin/bash
 
 root_dir=`pwd`
-cur_time=$(date "+%Y%m%d_%H%M%S")
 rm -rf *.jar
 
 cd $root_dir/../frontend/
@@ -27,6 +26,7 @@ mvn package
 cp target/chat.jar $root_dir/
 cp src/main/resources/application.yml $root_dir/
 
-if [ $1 == "docker" ]; then
-  sudo docker build -t chat-sample:v1.0.0 .
+cd $root_dir/
+if [ $# == 1 ] && [ $1 == "docker" ]; then
+  docker build -t chat-sample:1.0.0 .
 fi

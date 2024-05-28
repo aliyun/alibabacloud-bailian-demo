@@ -11,7 +11,9 @@
   },
   "dependencies": {
     "@microsoft/fetch-event-source": "^2.0.1",
+    "uuid": "^9.0.1",
     "vue": "^2.7.16",
+    "vue-markdown": "^2.2.4",
     "vue-material": "^1.0.0-beta-16",
     "vue-router": "^3.0.1"
   },
